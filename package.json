@@ -37,6 +37,6 @@
     "shortcake": "1.2.5"
   },
   "dependencies": {
-    "es-object-assign": "4.1.2"
+    "es-object-assign": "4.1.3"
   }
 }
