@@ -1,92 +1,4 @@
-var getOwnPropertySymbols;
-var hasOwnProperty;
-var objectAssign;
-var propIsEnumerable;
-var shouldUseNative;
-var toObject;
-var slice = [].slice;
-
-getOwnPropertySymbols = Object.getOwnPropertySymbols;
-
-hasOwnProperty = Object.prototype.hasOwnProperty;
-
-propIsEnumerable = Object.prototype.propertyIsEnumerable;
-
-toObject = function(val) {
-  if (val === null || val === void 0) {
-    throw new TypeError('Object.assign cannot be called with null or undefined');
-  }
-  return Object(val);
-};
-
-shouldUseNative = function() {
-  var err, i, j, k, len, letter, order2, ref, test1, test2, test3;
-  try {
-    if (!Object.assign) {
-      return false;
-    }
-    test1 = new String('abc');
-    test1[5] = 'de';
-    if (Object.getOwnPropertyNames(test1)[0] === '5') {
-      return false;
-    }
-    test2 = {};
-    for (i = j = 0; j <= 9; i = ++j) {
-      test2['_' + String.fromCharCode(i)] = i;
-    }
-    order2 = Object.getOwnPropertyNames(test2).map(function(n) {
-      return test2[n];
-    });
-    if (order2.join('') !== '0123456789') {
-      return false;
-    }
-    test3 = {};
-    ref = 'abcdefghijklmnopqrst'.split('');
-    for (k = 0, len = ref.length; k < len; k++) {
-      letter = ref[k];
-      test3[letter] = letter;
-    }
-    if (Object.keys(Object.assign({}, test3)).join('') !== 'abcdefghijklmnopqrst') {
-      return false;
-    }
-    return true;
-  } catch (error) {
-    err = error;
-    return false;
-  }
-};
-
-var index$1 = objectAssign = (function() {
-  if (shouldUseNative()) {
-    return Object.assign;
-  }
-  return function() {
-    var from, j, k, key, len, len1, ref, source, sources, symbol, target, to;
-    target = arguments[0], sources = 2 <= arguments.length ? slice.call(arguments, 1) : [];
-    to = toObject(target);
-    for (j = 0, len = sources.length; j < len; j++) {
-      source = sources[j];
-      from = Object(source);
-      for (key in from) {
-        if (hasOwnProperty.call(from, key)) {
-          to[key] = from[key];
-        }
-      }
-      if (getOwnPropertySymbols) {
-        ref = getOwnPropertySymbols(from);
-        for (k = 0, len1 = ref.length; k < len1; k++) {
-          symbol = ref[k];
-          if (propIsEnumerable.call(from, symbol)) {
-            to[symbol] = from[symbol];
-          }
-        }
-      }
-    }
-    return to;
-  };
-})();
-
-module.exports = index$1;
+import objectAssign from 'es-object-assign';
 
 /*!
  * JavaScript Cookie v2.1.3
@@ -105,7 +17,7 @@ init = function(converter) {
       return;
     }
     if (arguments.length > 1) {
-      attributes = Object.assign({
+      attributes = objectAssign({
         path: '/'
       }, api.defaults, attributes);
       if (typeof attributes.expires === 'number') {
@@ -189,7 +101,7 @@ init = function(converter) {
   };
   api.defaults = {};
   api.remove = function(key, attributes) {
-    api(key, '', Object.assign(attributes, {
+    api(key, '', objectAssign(attributes, {
       expires: -1
     }));
   };
