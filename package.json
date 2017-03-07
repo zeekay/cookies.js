@@ -1,11 +1,13 @@
 {
   "name": "es-cookies",
-  "version": "2.1.7",
+  "version": "2.1.8",
   "description": "Module-friendly fork of [js-cookie](https://github.com/js-cookie/js-cookie). A simple, lightweight JavaScript API for handling cookies",
   "main": "dist/es-cookies.js",
   "module": "dist/es-cookies.mjs",
   "js:next": "dist/es-cookies.mjs",
-  "files": ["dist/"],
+  "files": [
+    "dist/"
+  ],
   "directories": {
     "test": "test"
   },
