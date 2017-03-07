@@ -1,10 +1,10 @@
 {
-  "name": "es-cookie",
+  "name": "es-cookies",
   "version": "2.1.4",
   "description": "Module-friendly fork of [js-cookie](https://github.com/js-cookie/js-cookie). A simple, lightweight JavaScript API for handling cookies",
-  "main": "dist/es-cookie.js",
-  "module": "dist/es-cookie.mjs",
-  "js:next": "dist/es-cookie.mjs",
+  "main": "dist/es-cookies.js",
+  "module": "dist/es-cookies.mjs",
+  "js:next": "dist/es-cookies.mjs",
   "directories": {
     "test": "test"
   },
@@ -24,7 +24,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/zeekay/es-cookie.git"
+    "url": "git://github.com/zeekay/es-cookies.git"
   },
   "author": "Klaus Hartl",
   "license": "MIT",
