@@ -5,6 +5,7 @@
   "main": "dist/es-cookies.js",
   "module": "dist/es-cookies.mjs",
   "js:next": "dist/es-cookies.mjs",
+  "files": ["dist/"],
   "directories": {
     "test": "test"
   },
