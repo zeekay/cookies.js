@@ -33,10 +33,10 @@
     "cake-test": "0.1.0",
     "cake-version": "0.1.9",
     "coffee-script": "1.12.4",
-    "handroll": "0.2.6",
+    "handroll": "0.2.8",
     "shortcake": "1.2.5"
   },
   "dependencies": {
-    "es-object-assign": "4.1.1"
+    "es-object-assign": "4.1.2"
   }
 }

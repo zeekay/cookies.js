@@ -13,7 +13,7 @@ init = (converter) ->
 
     # Write
     if arguments.length > 1
-      attributes = Object.assign {path: '/'}, api.defaults, attributes
+      attributes = objectAssign {path: '/'}, api.defaults, attributes
 
       if typeof attributes.expires == 'number'
         expires = new Date
@@ -101,7 +101,7 @@ init = (converter) ->
   api.defaults = {}
 
   api.remove = (key, attributes) ->
-    api key, '', Object.assign attributes, expires: -1
+    api key, '', objectAssign attributes, expires: -1
     return
 
   api.withConverter = init
