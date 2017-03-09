@@ -14,6 +14,7 @@ task 'build', 'build project', ->
     external: true
 
   yield bundle.write format: 'es'
+  yield bundle.write format: 'cjs'
 
 task 'watch', 'watch project', ->
   watch 'src/*.coffee', (filename) ->
