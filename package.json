@@ -31,15 +31,15 @@
   },
   "author": "Klaus Hartl",
   "license": "MIT",
+  "dependencies": {
+    "es-object-assign": "4.1.3"
+  },
   "devDependencies": {
     "cake-publish": "0.1.5",
     "cake-test": "0.1.0",
     "cake-version": "0.1.9",
     "coffee-script": "1.12.4",
-    "handroll": "0.2.9",
+    "handroll": "0.4.5",
     "shortcake": "1.2.5"
-  },
-  "dependencies": {
-    "es-object-assign": "4.1.3"
   }
 }
