@@ -1,9 +1,18 @@
-# cookies.js [![Build Status](https://travis-ci.org/js-cookie/js-cookie.svg?branch=master)](https://travis-ci.org/js-cookie/js-cookie) [![Code Climate](https://codeclimate.com/github/js-cookie/js-cookie.svg)](https://codeclimate.com/github/js-cookie/js-cookie)
+# cookies.js
+
+[![npm][npm-img]][npm-url]
+[![build][build-img]][build-url]
+[![dependencies][dependencies-img]][dependencies-url]
+[![downloads][downloads-img]][downloads-url]
+[![license][license-img]][license-url]
+[![chat][chat-img]][chat-url]
+
 <p align="center">
   <img src="https://cloud.githubusercontent.com/assets/835857/14581711/ba623018-0436-11e6-8fce-d2ccd4d379c9.gif">
 </p>
 
-A simple, lightweight JavaScript API for handling cookies.
+A simple, lightweight JavaScript API for handling cookies. This is a
+module-friendly fork of [js-cookie][js-cookie].
 
 * Works in [all](https://saucelabs.com/u/js-cookie) browsers
 * Accepts [any](#encoding) character
@@ -12,12 +21,12 @@ A simple, lightweight JavaScript API for handling cookies.
 * [Unobtrusive](#json) JSON support
 * Supports AMD/CommonJS
 * [RFC 6265](https://tools.ietf.org/html/rfc6265) compliant
-* Useful [Wiki](https://github.com/js-cookie/js-cookie/wiki)
+* Useful [Wiki](https://github.com/zeekay/cookies.js/wiki)
 * Enable [custom encoding/decoding](#converters)
 * **~900 bytes** gzipped!
 
-**If you're viewing this at https://github.com/js-cookie/js-cookie, you're reading the documentation for the master branch.
-[View documentation for the latest release.](https://github.com/js-cookie/js-cookie/tree/latest#readme)**
+**If you're viewing this at https://github.com/zeekay/cookies.js, you're reading the documentation for the master branch.
+[View documentation for the latest release.](https://github.com/zeekay/cookies.js/tree/latest#readme)**
 
 ## Build Status Matrix
 
@@ -27,7 +36,7 @@ A simple, lightweight JavaScript API for handling cookies.
 
 ### Direct download
 
-Download the script [here](https://github.com/js-cookie/js-cookie/blob/latest/src/js.cookie.js) and include it (unless you are packaging scripts somehow else):
+Download the script [here](https://github.com/zeekay/cookies.js/blob/latest/src/js.cookie.js) and include it (unless you are packaging scripts somehow else):
 
 ```html
 <script src="/path/to/js.cookie.js"></script>
@@ -42,7 +51,7 @@ JavaScript Cookie supports [npm](https://www.npmjs.com/package/js-cookie) and [B
 
 ### Module Loaders
 
-JavaScript Cookie can also be loaded as an AMD, CommonJS or [ES6](https://github.com/js-cookie/js-cookie/issues/233#issuecomment-233187386) module.
+JavaScript Cookie can also be loaded as an AMD, CommonJS or [ES6](https://github.com/zeekay/cookies.js/issues/233#issuecomment-233187386) module.
 
 ## Basic Usage
 
@@ -143,7 +152,7 @@ Cookies.getJSON(); // => { name: { foo: 'bar' } }
 
 This project is [RFC 6265](http://tools.ietf.org/html/rfc6265#section-4.1.1) compliant. All special characters that are not allowed in the cookie-name or cookie-value are encoded with each one's UTF-8 Hex equivalent using [percent-encoding](http://en.wikipedia.org/wiki/Percent-encoding).
 The only character in cookie-name or cookie-value that is allowed and still encoded is the percent `%` character, it is escaped in order to interpret percent input as literal.
-Please note that the default encoding/decoding strategy is meant to be interoperable [only between cookies that are read/written by js-cookie](https://github.com/js-cookie/js-cookie/pull/200#discussion_r63270778). To override the default encoding/decoding strategy you need to use a [converter](#converter).
+Please note that the default encoding/decoding strategy is meant to be interoperable [only between cookies that are read/written by js-cookie](https://github.com/zeekay/cookies.js/pull/200#discussion_r63270778). To override the default encoding/decoding strategy you need to use a [converter](#converter).
 
 ## Cookie Attributes
 
@@ -153,7 +162,7 @@ Cookie attributes defaults can be set globally by setting properties of the `Coo
 
 Define when the cookie will be removed. Value can be a [`Number`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number) which will be interpreted as days from time of creation or a [`Date`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) instance. If omitted, the cookie becomes a session cookie.
 
-To create a cookie that expires in less than a day, you can check the [FAQ on the Wiki](https://github.com/js-cookie/js-cookie/wiki/Frequently-Asked-Questions#expire-cookies-in-less-than-a-day).
+To create a cookie that expires in less than a day, you can check the [FAQ on the Wiki](https://github.com/zeekay/cookies.js/wiki/Frequently-Asked-Questions#expire-cookies-in-less-than-a-day).
 
 **Default:** Cookie is removed when the user closes the browser.
 
@@ -285,8 +294,28 @@ Check out the [Contributing Guidelines](CONTRIBUTING.md)
   * `git push origin master --tags`
 * Release on npm
 
-## Authors
-
+## Credit
+Original project was authored by:
 * [Klaus Hartl](https://github.com/carhartl)
 * [Fagner Brack](https://github.com/FagnerMartinsBrack)
 * And awesome [contributors](https://github.com/js-cookie/js-cookie/graphs/contributors)
+
+## License
+[MIT][license-url]
+
+[js-cookie]:        https://github.com/js-cookie/js-cookie
+
+[build-img]:        https://img.shields.io/travis/zeekay/cookie.js.svg
+[build-url]:        https://travis-ci.org/zeekay/cookie.js
+[chat-img]:         https://badges.gitter.im/join-chat.svg
+[chat-url]:         https://gitter.im/zeekay/hi
+[coverage-img]:     https://coveralls.io/repos/zeekay/cookie.js/badge.svg?branch=master&service=github
+[coverage-url]:     https://coveralls.io/github/zeekay/cookie.js?branch=master
+[dependencies-img]: https://david-dm.org/zeekay/cookie.js.svg
+[dependencies-url]: https://david-dm.org/zeekay/cookie.js
+[downloads-img]:    https://img.shields.io/npm/dm/cookies.js.svg
+[downloads-url]:    http://badge.fury.io/js/cookies.js
+[license-img]:      https://img.shields.io/npm/l/cookies.js.svg
+[license-url]:      https://github.com/zeekay/cookies.js/blob/master/LICENSE
+[npm-img]:          https://img.shields.io/npm/v/cookies.js.svg
+[npm-url]:          https://www.npmjs.com/package/cookies.js
