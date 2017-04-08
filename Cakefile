@@ -18,18 +18,19 @@ task 'build', 'build project', ->
 
 task 'build:min', 'build minified version', ['build'], ->
   b = yield bundle
-    entry:    'src/index.coffee'
-    format:   'web'
-    external: false
+    entry:      'src/index.coffee'
+    format:     'web'
+    external:   false
+    moduleName: 'Cookies'
     compilers:
       coffee: version: 1
 
   Promise.all [
     b.write
-      dest: 'escookies.js'
+      dest:      'cookies.js'
       sourceMap: 'inline'
     b.write
-      dest:      'escookies.min.js'
+      dest:      'cookies.min.js'
       minifiy:   true
       sourceMap: false
   ]

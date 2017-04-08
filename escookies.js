@@ -1,4 +1,4 @@
-var EsCookies = (function () {
+var Cookies = (function () {
 'use strict';
 
 // node_modules/es-object-assign/index.mjs
