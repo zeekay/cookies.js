@@ -5,7 +5,7 @@ require(['qunit'], function (QUnit) {
 	QUnit.test('module loading', function (assert) {
 		assert.expect(1);
 		var done = assert.async();
-		require(['/src/js.cookie.js'], function (Cookies) {
+		require(['/lib/cookies.js'], function (Cookies) {
 			assert.ok(!!Cookies.get, 'should load the api');
 			done();
 		});

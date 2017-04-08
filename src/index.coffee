@@ -1,2 +1,2 @@
-import Cookie from './cookie'
-export default new Cookie()
+import Cookies from './cookies'
+export default new Cookies()
