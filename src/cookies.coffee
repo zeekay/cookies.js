@@ -46,9 +46,9 @@ class Cookies
     unless key
       result = {}
 
-    # To prevent the for loop in the first place assign an empty array
-    # in case there are no cookies at all. Also prevents odd result when
-    # calling "get()"
+    # To prevent the for loop in the first place assign an empty array in case
+    # there are no cookies at all. Also prevents odd result when calling
+    # "get()"
     cookies = if document.cookie then document.cookie.split('; ') else []
     rdecode = /(%[0-9A-Z]{2})+/g
 
