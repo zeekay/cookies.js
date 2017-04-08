@@ -7,9 +7,7 @@
 [![license][license-img]][license-url]
 [![chat][chat-img]][chat-url]
 
-<p align="center">
-  <img src="https://cloud.githubusercontent.com/assets/835857/14581711/ba623018-0436-11e6-8fce-d2ccd4d379c9.gif">
-</p>
+<img src="https://cloud.githubusercontent.com/assets/835857/14581711/ba623018-0436-11e6-8fce-d2ccd4d379c9.gif">
 
 A simple, lightweight JavaScript API for handling cookies. This is a
 module-friendly fork of [js-cookie][js-cookie].
