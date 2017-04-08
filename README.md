@@ -1,10 +1,9 @@
+# cookies.js [![Build Status](https://travis-ci.org/js-cookie/js-cookie.svg?branch=master)](https://travis-ci.org/js-cookie/js-cookie) [![Code Climate](https://codeclimate.com/github/js-cookie/js-cookie.svg)](https://codeclimate.com/github/js-cookie/js-cookie)
 <p align="center">
   <img src="https://cloud.githubusercontent.com/assets/835857/14581711/ba623018-0436-11e6-8fce-d2ccd4d379c9.gif">
 </p>
 
-# JavaScript Cookie [![Build Status](https://travis-ci.org/js-cookie/js-cookie.svg?branch=master)](https://travis-ci.org/js-cookie/js-cookie) [![Code Climate](https://codeclimate.com/github/js-cookie/js-cookie.svg)](https://codeclimate.com/github/js-cookie/js-cookie)
-
-A simple, lightweight JavaScript API for handling cookies
+A simple, lightweight JavaScript API for handling cookies.
 
 * Works in [all](https://saucelabs.com/u/js-cookie) browsers
 * Accepts [any](#encoding) character
@@ -142,8 +141,8 @@ Cookies.getJSON(); // => { name: { foo: 'bar' } }
 
 ## Encoding
 
-This project is [RFC 6265](http://tools.ietf.org/html/rfc6265#section-4.1.1) compliant. All special characters that are not allowed in the cookie-name or cookie-value are encoded with each one's UTF-8 Hex equivalent using [percent-encoding](http://en.wikipedia.org/wiki/Percent-encoding).  
-The only character in cookie-name or cookie-value that is allowed and still encoded is the percent `%` character, it is escaped in order to interpret percent input as literal.  
+This project is [RFC 6265](http://tools.ietf.org/html/rfc6265#section-4.1.1) compliant. All special characters that are not allowed in the cookie-name or cookie-value are encoded with each one's UTF-8 Hex equivalent using [percent-encoding](http://en.wikipedia.org/wiki/Percent-encoding).
+The only character in cookie-name or cookie-value that is allowed and still encoded is the percent `%` character, it is escaped in order to interpret percent input as literal.
 Please note that the default encoding/decoding strategy is meant to be interoperable [only between cookies that are read/written by js-cookie](https://github.com/js-cookie/js-cookie/pull/200#discussion_r63270778). To override the default encoding/decoding strategy you need to use a [converter](#converter).
 
 ## Cookie Attributes
@@ -205,8 +204,8 @@ Cookies.get('name'); // => undefined (need to read at 'subdomain.site.com')
 
 **Note regarding Internet Explorer default behavior:**
 
-> Q3: If I don’t specify a DOMAIN attribute (for) a cookie, IE sends it to all nested subdomains anyway?  
-> A: Yes, a cookie set on example.com will be sent to sub2.sub1.example.com.  
+> Q3: If I don’t specify a DOMAIN attribute (for) a cookie, IE sends it to all nested subdomains anyway?
+> A: Yes, a cookie set on example.com will be sent to sub2.sub1.example.com.
 > Internet Explorer differs from other browsers in this regard.
 
 (From [Internet Explorer Cookie Internals (FAQ)](http://blogs.msdn.com/b/ieinternals/archive/2009/08/20/wininet-ie-cookie-internals-faq.aspx))
@@ -231,8 +230,8 @@ Cookies.remove('name', { secure: true });
 
 ### Read
 
-Create a new instance of the api that overrides the default decoding implementation.  
-All get methods that rely in a proper decoding to work, such as `Cookies.get()` and `Cookies.get('name')`, will run the converter first for each cookie.  
+Create a new instance of the api that overrides the default decoding implementation.
+All get methods that rely in a proper decoding to work, such as `Cookies.get()` and `Cookies.get('name')`, will run the converter first for each cookie.
 The returning String will be used as the cookie value.
 
 Example from reading one of the cookies that can only be decoded using the `escape` function:
