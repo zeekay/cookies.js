@@ -200,14 +200,44 @@ var isObject = function(value) {
 var Cookies;
 
 Cookies = (function() {
-  function Cookies() {}
-
-  Cookies.prototype.contructor = function(defaults) {
+  function Cookies(defaults) {
     this.defaults = defaults != null ? defaults : {};
-  };
+    this.get = (function(_this) {
+      return function(key) {
+        return _this.api(key);
+      };
+    })(this);
+    this.remove = (function(_this) {
+      return function(key, attrs) {
+        return _this.api(key, '', index$1({
+          expires: -1
+        }, attrs));
+      };
+    })(this);
+    this.set = (function(_this) {
+      return function(key, value, attrs) {
+        return _this.api(key, value, attrs);
+      };
+    })(this);
+    this.getJSON = (function(_this) {
+      return function(key) {
+        var err, val;
+        val = _this.api(key);
+        if (val == null) {
+          return {};
+        }
+        try {
+          return JSON.parse(val);
+        } catch (error) {
+          err = error;
+          return val;
+        }
+      };
+    })(this);
+  }
 
   Cookies.prototype.api = function(key, value, attrs) {
-    var attr, cookie, cookies, err, expires, i, name, parts, rdecode, result, strAttrs;
+    var attr, cookie, cookies, err, expires, i, kv, len, name, parts, rdecode, result, strAttrs;
     if (typeof document === 'undefined') {
       return;
     }
@@ -252,9 +282,9 @@ Cookies = (function() {
     }
     cookies = document.cookie ? document.cookie.split('; ') : [];
     rdecode = /(%[0-9A-Z]{2})+/g;
-    i = 0;
-    while (i < cookies.length) {
-      parts = cookies[i].split('=');
+    for (i = 0, len = cookies.length; i < len; i++) {
+      kv = cookies[i];
+      parts = kv.split('=');
       cookie = parts.slice(1).join('=');
       if (cookie.charAt(0) === '"') {
         cookie = cookie.slice(1, -1);
@@ -263,8 +293,7 @@ Cookies = (function() {
         name = parts[0].replace(rdecode, decodeURIComponent);
         cookie = cookie.replace(rdecode, decodeURIComponent);
         if (key === name) {
-          result = cookie;
-          break;
+          return cookie;
         }
         if (!key) {
           result[name] = cookie;
@@ -274,30 +303,6 @@ Cookies = (function() {
       }
     }
     return result;
-  };
-
-  Cookies.prototype.get = function(key) {
-    return this.api(key);
-  };
-
-  Cookies.prototype.getJSON = function(key) {
-    var err;
-    try {
-      return JSON.parse(this.api(key));
-    } catch (error) {
-      err = error;
-      return {};
-    }
-  };
-
-  Cookies.prototype.set = function(key, value, attrs) {
-    return this.api(key, value, attrs);
-  };
-
-  Cookies.prototype.remove = function(key, attrs) {
-    return this.api(key, '', index$1(attrs, {
-      expires: -1
-    }));
   };
 
   return Cookies;

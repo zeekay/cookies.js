@@ -17,23 +17,16 @@ task 'build', 'build project', ->
       coffee: version: 1
 
 task 'build:min', 'build minified version', ['build'], ->
-  b = yield bundle
+  yield bundle.write
     entry:      'src/index.coffee'
+    dest:       'cookies.js'
+    sourceMap:  'inline'
     format:     'web'
-    external:   false
     moduleName: 'Cookies'
     compilers:
       coffee: version: 1
 
-  Promise.all [
-    b.write
-      dest:      'cookies.js'
-      sourceMap: 'inline'
-    b.write
-      dest:      'cookies.min.js'
-      minifiy:   true
-      sourceMap: false
-  ]
+  yield exec 'uglifyjs cookies.js -o cookies.min.js'
 
 task 'watch', 'watch project', ->
   watch 'src/*.coffee', (filename) ->
