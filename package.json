@@ -40,7 +40,6 @@
     "cake-test": "0.1.0",
     "cake-version": "0.1.15",
     "coffee-script": "1.12.4",
-    "handroll": "0.13.1",
     "qunitjs": "2.3.0",
     "shortcake": "1.2.8"
   }
