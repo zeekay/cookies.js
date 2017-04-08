@@ -3,7 +3,16 @@ import {isNumber}   from 'es-is'
 
 
 class Cookies
-  contructor: (@defaults = {}) ->
+  constructor: (@defaults = {}) ->
+    @get    = (key)               => @api key
+    @remove = (key, attrs)        => @api key, '', objectAssign expires: -1, attrs
+    @set    = (key, value, attrs) => @api key, value, attrs
+
+    @getJSON = (key) =>
+      try
+        JSON.parse @api key
+      catch err
+        {}
 
   api: (key, value, attrs) ->
     return if typeof document == 'undefined'
@@ -52,40 +61,24 @@ class Cookies
     cookies = if document.cookie then document.cookie.split('; ') else []
     rdecode = /(%[0-9A-Z]{2})+/g
 
-    i = 0
-    while i < cookies.length
-      parts  = cookies[i].split '='
+    for kv in cookies
+      parts  = kv.split '='
       cookie = parts.slice(1).join '='
 
       if cookie.charAt(0) == '"'
         cookie = cookie.slice 1, -1
 
       try
-        name = parts[0].replace rdecode, decodeURIComponent
-        cookie = cookie.replace rdecode, decodeURIComponent
+        name   = parts[0].replace rdecode, decodeURIComponent
+        cookie = cookie.replace   rdecode, decodeURIComponent
 
         if key == name
-          result = cookie
-          break
-
+          return cookie
         unless key
           result[name] = cookie
+
       catch err
 
     result
-
-  get: (key) -> @api key
-
-  getJSON: (key) ->
-    try
-      JSON.parse @api key
-    catch err
-      {}
-
-  set: (key, value, attrs) ->
-    @api key, value, attrs
-
-  remove: (key, attrs) ->
-    @api key, '', objectAssign attrs, expires: -1
 
 export default Cookies

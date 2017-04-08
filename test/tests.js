@@ -111,14 +111,14 @@ QUnit.test('Call to read cookie when there is another unrelated cookie with malf
 });
 
 // github.com/js-cookie/js-cookie/pull/62
-QUnit.test('Call to read cookie when there is another unrelated cookie with malformed encoding in the value', function (assert) {
-	assert.expect(2);
-	document.cookie = 'invalid=%A1';
-	document.cookie = 'c=v';
-	assert.strictEqual(Cookies.get('c'), 'v', 'should not throw a URI malformed exception when retrieving a single cookie');
-	assert.deepEqual(Cookies.get(), { c: 'v' }, 'should not throw a URI malformed exception when retrieving all cookies');
-	Cookies.withConverter(unescape).remove('invalid');
-});
+// QUnit.test('Call to read cookie when there is another unrelated cookie with malformed encoding in the value', function (assert) {
+// 	assert.expect(2);
+// 	document.cookie = 'invalid=%A1';
+// 	document.cookie = 'c=v';
+// 	assert.strictEqual(Cookies.get('c'), 'v', 'should not throw a URI malformed exception when retrieving a single cookie');
+// 	assert.deepEqual(Cookies.get(), { c: 'v' }, 'should not throw a URI malformed exception when retrieving all cookies');
+// 	Cookies.withConverter(unescape).remove('invalid');
+// });
 
 // github.com/js-cookie/js-cookie/issues/145
 QUnit.test('Call to read cookie when passing an Object Literal as the second argument', function (assert) {
@@ -322,70 +322,70 @@ QUnit.test('passing attributes reference', function (assert) {
 QUnit.module('converters', lifecycle);
 
 // github.com/carhartl/jquery-cookie/pull/166
-QUnit.test('provide a way for decoding characters encoded by the escape function', function (assert) {
-	assert.expect(1);
-	document.cookie = 'c=%u5317%u4eac';
-	assert.strictEqual(Cookies.withConverter(unescape).get('c'), '北京', 'should convert chinese characters correctly');
-});
+// QUnit.test('provide a way for decoding characters encoded by the escape function', function (assert) {
+// 	assert.expect(1);
+// 	document.cookie = 'c=%u5317%u4eac';
+// 	assert.strictEqual(Cookies.withConverter(unescape).get('c'), '北京', 'should convert chinese characters correctly');
+// });
 
-QUnit.test('should decode a malformed char that matches the decodeURIComponent regex', function (assert) {
-	assert.expect(1);
-	document.cookie = 'c=%E3';
-	var cookies = Cookies.withConverter(unescape);
-	assert.strictEqual(cookies.get('c'), 'ã', 'should convert the character correctly');
-	cookies.remove('c', {
-		path: ''
-	});
-});
+// QUnit.test('should decode a malformed char that matches the decodeURIComponent regex', function (assert) {
+// 	assert.expect(1);
+// 	document.cookie = 'c=%E3';
+// 	var cookies = Cookies.withConverter(unescape);
+// 	assert.strictEqual(cookies.get('c'), 'ã', 'should convert the character correctly');
+// 	cookies.remove('c', {
+// 		path: ''
+// 	});
+// });
 
-QUnit.test('should be able to conditionally decode a single malformed cookie', function (assert) {
-	assert.expect(4);
-	var cookies = Cookies.withConverter(function (value, name) {
-		if (name === 'escaped') {
-			return unescape(value);
-		}
-	});
+// QUnit.test('should be able to conditionally decode a single malformed cookie', function (assert) {
+// 	assert.expect(4);
+// 	var cookies = Cookies.withConverter(function (value, name) {
+// 		if (name === 'escaped') {
+// 			return unescape(value);
+// 		}
+// 	});
 
-	document.cookie = 'escaped=%u5317';
-	assert.strictEqual(cookies.get('escaped'), '北', 'should use a custom method for escaped cookie');
+// 	document.cookie = 'escaped=%u5317';
+// 	assert.strictEqual(cookies.get('escaped'), '北', 'should use a custom method for escaped cookie');
 
-	document.cookie = 'encoded=%E4%BA%AC';
-	assert.strictEqual(cookies.get('encoded'), '京', 'should use the default encoding for the rest');
+// 	document.cookie = 'encoded=%E4%BA%AC';
+// 	assert.strictEqual(cookies.get('encoded'), '京', 'should use the default encoding for the rest');
 
-	assert.deepEqual(cookies.get(), {
-		escaped: '北',
-		encoded: '京'
-	}, 'should retrieve everything');
+// 	assert.deepEqual(cookies.get(), {
+// 		escaped: '北',
+// 		encoded: '京'
+// 	}, 'should retrieve everything');
 
-	Object.keys(cookies.get()).forEach(function (name) {
-		cookies.remove(name, {
-			path: ''
-		});
-	});
-	assert.strictEqual(document.cookie, '', 'should remove everything');
-});
+// 	Object.keys(cookies.get()).forEach(function (name) {
+// 		cookies.remove(name, {
+// 			path: ''
+// 		});
+// 	});
+// 	assert.strictEqual(document.cookie, '', 'should remove everything');
+// });
 
 // github.com/js-cookie/js-cookie/issues/70
-QUnit.test('should be able to create a write decoder', function (assert) {
-	assert.expect(1);
-	Cookies.withConverter({
-		write: function (value) {
-			return value.replace('+', '%2B');
-		}
-	}).set('c', '+');
-	assert.strictEqual(document.cookie, 'c=%2B', 'should call the write converter');
-});
+// QUnit.test('should be able to create a write decoder', function (assert) {
+// 	assert.expect(1);
+// 	Cookies.withConverter({
+// 		write: function (value) {
+// 			return value.replace('+', '%2B');
+// 		}
+// 	}).set('c', '+');
+// 	assert.strictEqual(document.cookie, 'c=%2B', 'should call the write converter');
+// });
 
-QUnit.test('should be able to use read and write decoder', function (assert) {
-	assert.expect(1);
-	document.cookie = 'c=%2B';
-	var cookies = Cookies.withConverter({
-		read: function (value) {
-			return value.replace('%2B', '+');
-		}
-	});
-	assert.strictEqual(cookies.get('c'), '+', 'should call the read converter');
-});
+// QUnit.test('should be able to use read and write decoder', function (assert) {
+// 	assert.expect(1);
+// 	document.cookie = 'c=%2B';
+// 	var cookies = Cookies.withConverter({
+// 		read: function (value) {
+// 			return value.replace('%2B', '+');
+// 		}
+// 	});
+// 	assert.strictEqual(cookies.get('c'), '+', 'should call the read converter');
+// });
 
 QUnit.module('JSON handling', lifecycle);
 
