@@ -1,5 +1,5 @@
 {
-  "name": "es-cookies",
+  "name": "cookies.js",
   "version": "2.1.13",
   "description": "Module-friendly fork of js-cookie. A simple, lightweight JavaScript API for handling cookies",
   "main": "lib/cookies.js",
@@ -25,9 +25,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/zeekay/es-cookies.git"
+    "url": "git://github.com/zeekay/cookies.js.git"
   },
-  "author": "Klaus Hartl",
+  "author": "Zach Kelling <z@zeekay.io>",
   "license": "MIT",
   "dependencies": {
     "es-is": "3.2.2",
