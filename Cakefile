@@ -3,6 +3,7 @@ require 'shortcake'
 use 'cake-test'
 use 'cake-publish'
 use 'cake-version'
+use 'cake-outdated'
 
 task 'clean', 'clean project', ->
   exec 'rm -rf dist'
