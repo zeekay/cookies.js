@@ -2,7 +2,7 @@ import objectAssign from 'es-object-assign'
 import {isNumber}   from 'es-is'
 
 
-class Cookie
+class Cookies
   contructor: (@defaults = {}) ->
 
   api: (key, value, attrs) ->
@@ -74,11 +74,11 @@ class Cookie
 
     result
 
-  get: (key) -> @api.get key
+  get: (key) -> @api key
 
   getJSON: (key) ->
     try
-      JSON.parse @api.get key
+      JSON.parse @api key
     catch err
       {}
 
@@ -88,4 +88,4 @@ class Cookie
   remove: (key, attrs) ->
     @api key, '', objectAssign attrs, expires: -1
 
-export default Cookie
+export default Cookies

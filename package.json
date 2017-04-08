@@ -2,9 +2,9 @@
   "name": "es-cookies",
   "version": "2.1.12",
   "description": "Module-friendly fork of js-cookie. A simple, lightweight JavaScript API for handling cookies",
-  "main": "lib/cookies.js",
-  "module": "lib/cookies.mjs",
-  "js:next": "lib/cookies.mjs",
+  "main": "lib/escookies.js",
+  "module": "lib/escookies.mjs",
+  "js:next": "lib/escookies.mjs",
   "files": [
     "src/",
     "lib/"
@@ -41,6 +41,7 @@
     "cake-version": "0.1.15",
     "coffee-script": "1.12.4",
     "handroll": "0.13.1",
+    "qunitjs": "2.3.0",
     "shortcake": "1.2.8"
   }
 }
