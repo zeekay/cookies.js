@@ -1,5 +1,5 @@
 import objectAssign from 'es-object-assign'
-import isNumber     from 'es-is'
+import {isNumber}   from 'es-is'
 
 
 class Cookie
