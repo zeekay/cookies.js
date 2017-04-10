@@ -30,7 +30,7 @@
   "author": "Zach Kelling <z@zeekay.io>",
   "license": "MIT",
   "dependencies": {
-    "es-is": "3.3.2",
+    "es-is": "3.3.7",
     "es-object-assign": "4.1.4"
   },
   "devDependencies": {
