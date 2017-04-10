@@ -10,46 +10,20 @@
 <img src="https://cloud.githubusercontent.com/assets/835857/14581711/ba623018-0436-11e6-8fce-d2ccd4d379c9.gif">
 
 A simple, lightweight JavaScript API for handling cookies. This is a
-module-friendly fork of [js-cookie][js-cookie].
+module-friendly rewrite of [js-cookie][js-cookie].
 
 * Works in [all](https://saucelabs.com/u/js-cookie) browsers
 * Accepts [any](#encoding) character
 * [Heavily](test) tested
-* No dependency
 * [Unobtrusive](#json) JSON support
-* Supports AMD/CommonJS
+* Supports CommonJS and ES modules
 * [RFC 6265](https://tools.ietf.org/html/rfc6265) compliant
-* Useful [Wiki](https://github.com/zeekay/cookies.js/wiki)
-* Enable [custom encoding/decoding](#converters)
-* **~900 bytes** gzipped!
-
-**If you're viewing this at https://github.com/zeekay/cookies.js, you're reading the documentation for the master branch.
-[View documentation for the latest release.](https://github.com/zeekay/cookies.js/tree/latest#readme)**
-
-## Build Status Matrix
-
-[![Selenium Test Status](https://saucelabs.com/browser-matrix/js-cookie.svg)](https://saucelabs.com/u/js-cookie)
 
 ## Installation
 
-### Direct download
-
-Download the script [here](https://github.com/zeekay/cookies.js/blob/latest/src/js.cookie.js) and include it (unless you are packaging scripts somehow else):
-
-```html
-<script src="/path/to/js.cookie.js"></script>
+```bash
+$ npm install cookies.js --save
 ```
-
-**Do not include the script directly from GitHub (http://raw.github.com/...).** The file is being served as text/plain and as such being blocked
-in Internet Explorer on Windows 7 for instance (because of the wrong MIME type). Bottom line: GitHub is not a CDN.
-
-### Package Managers
-
-JavaScript Cookie supports [npm](https://www.npmjs.com/package/js-cookie) and [Bower](http://bower.io/search/?q=js-cookie) under the name `js-cookie`.
-
-### Module Loaders
-
-JavaScript Cookie can also be loaded as an AMD, CommonJS or [ES6](https://github.com/zeekay/cookies.js/issues/233#issuecomment-233187386) module.
 
 ## Basic Usage
 
@@ -282,7 +256,7 @@ Check out the [Contributing Guidelines](CONTRIBUTING.md)
 ## Manual release steps
 
 * Increment the "version" attribute of `package.json`
-* Increment the version number in the `src/js.cookie.js` file
+* Increment the version number in the `src/js.cookies.js` file
 * Commit with the message "Release version x.x.x"
 * Create version tag in git
 * Create a github release and upload the minified file
@@ -296,21 +270,21 @@ Check out the [Contributing Guidelines](CONTRIBUTING.md)
 Original project was authored by:
 * [Klaus Hartl](https://github.com/carhartl)
 * [Fagner Brack](https://github.com/FagnerMartinsBrack)
-* And awesome [contributors](https://github.com/js-cookie/js-cookie/graphs/contributors)
+* And awesome [contributors](https://github.com/js-cookies.js-cookie/graphs/contributors)
 
 ## License
 [MIT][license-url]
 
 [js-cookie]:        https://github.com/js-cookie/js-cookie
 
-[build-img]:        https://img.shields.io/travis/zeekay/cookie.js.svg
-[build-url]:        https://travis-ci.org/zeekay/cookie.js
+[build-img]:        https://img.shields.io/travis/zeekay/cookies.js.svg
+[build-url]:        https://travis-ci.org/zeekay/cookies.js
 [chat-img]:         https://badges.gitter.im/join-chat.svg
 [chat-url]:         https://gitter.im/zeekay/hi
-[coverage-img]:     https://coveralls.io/repos/zeekay/cookie.js/badge.svg?branch=master&service=github
-[coverage-url]:     https://coveralls.io/github/zeekay/cookie.js?branch=master
-[dependencies-img]: https://david-dm.org/zeekay/cookie.js.svg
-[dependencies-url]: https://david-dm.org/zeekay/cookie.js
+[coverage-img]:     https://coveralls.io/repos/zeekay/cookies.js/badge.svg?branch=master&service=github
+[coverage-url]:     https://coveralls.io/github/zeekay/cookies.js?branch=master
+[dependencies-img]: https://david-dm.org/zeekay/cookies.js.svg
+[dependencies-url]: https://david-dm.org/zeekay/cookies.js
 [downloads-img]:    https://img.shields.io/npm/dm/cookies.js.svg
 [downloads-url]:    http://badge.fury.io/js/cookies.js
 [license-img]:      https://img.shields.io/npm/l/cookies.js.svg
