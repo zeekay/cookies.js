@@ -39,7 +39,7 @@
     "cake-publish": "0.1.10",
     "cake-test": "0.1.0",
     "cake-version": "0.1.15",
-    "coffee-script": "1.12.4",
+    "coffee-script": "1.12.5",
     "qunitjs": "2.3.0",
     "shortcake": "1.2.8"
   }
