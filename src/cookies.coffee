@@ -4,54 +4,17 @@ import {isNumber}   from 'es-is'
 
 class Cookies
   constructor: (@defaults = {}) ->
-    @get    = (key)               => @api key
-    @remove = (key, attrs)        => @api key, '', objectAssign expires: -1, attrs
-    @set    = (key, value, attrs) => @api key, value, attrs
-
+    @get     = (key) => @read key
     @getJSON = (key) =>
       try
-        JSON.parse @api key
+        JSON.parse @read key
       catch err
         {}
 
-  api: (key, value, attrs) ->
-    return if typeof document == 'undefined'
+    @remove = (key, attrs)        => @write key, '', objectAssign expires: -1, attrs
+    @set    = (key, value, attrs) => @write key, value, attrs
 
-    # Write
-    if arguments.length > 1
-      attrs = objectAssign path: '/', @defaults, attrs
-
-      if isNumber attrs.expires
-        expires = new Date
-        expires.setMilliseconds expires.getMilliseconds() + attrs.expires * 864e+5
-        attrs.expires = expires
-
-      # We're using "expires" because "max-age" is not supported by IE
-      attrs.expires = if attrs.expires then attrs.expires.toUTCString() else ''
-
-      try
-        result = JSON.stringify(value)
-        if /^[\{\[]/.test(result)
-          value = result
-      catch err
-
-      value = encodeURIComponent(String(value)).replace(/%(23|24|26|2B|3A|3C|3E|3D|2F|3F|40|5B|5D|5E|60|7B|7D|7C)/g, decodeURIComponent)
-
-      key = encodeURIComponent String key
-      key = key.replace(/%(23|24|26|2B|5E|60|7C)/g, decodeURIComponent)
-      key = key.replace(/[\(\)]/g, escape)
-
-      strAttrs = ''
-
-      for name, attr of attrs
-        continue unless attr
-        strAttrs += '; ' + name
-        continue if attr == true
-        strAttrs += '=' + attr
-
-      return document.cookie = key + '=' + value + strAttrs
-
-    # Read
+  read: (key) ->
     unless key
       result = {}
 
@@ -80,5 +43,38 @@ class Cookies
       catch err
 
     result
+
+  write: (key, value, attrs) ->
+    attrs = objectAssign path: '/', @defaults, attrs
+
+    if isNumber attrs.expires
+      expires = new Date
+      expires.setMilliseconds expires.getMilliseconds() + attrs.expires * 864e+5
+      attrs.expires = expires
+
+    # We're using "expires" because "max-age" is not supported by IE
+    attrs.expires = if attrs.expires then attrs.expires.toUTCString() else ''
+
+    try
+      result = JSON.stringify(value)
+      if /^[\{\[]/.test(result)
+        value = result
+    catch err
+
+    value = encodeURIComponent(String(value)).replace(/%(23|24|26|2B|3A|3C|3E|3D|2F|3F|40|5B|5D|5E|60|7B|7D|7C)/g, decodeURIComponent)
+    key   = encodeURIComponent String key
+    key   = key.replace(/%(23|24|26|2B|5E|60|7C)/g, decodeURIComponent)
+    key   = key.replace(/[\(\)]/g, escape)
+
+    strAttrs = ''
+
+    for name, attr of attrs
+      continue unless attr
+      strAttrs += '; ' + name
+      continue if attr == true
+      strAttrs += '=' + attr
+
+    document.cookie = key + '=' + value + strAttrs
+
 
 export default Cookies
