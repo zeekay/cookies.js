@@ -21,7 +21,8 @@
     "browserify"
   ],
   "scripts": {
-    "test": "cake test"
+    "prepublishOnly": "sake build",
+    "test": "sake test"
   },
   "repository": {
     "type": "git",
