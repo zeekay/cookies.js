@@ -1,5 +1,5 @@
 {
-  "name": "cookies.js",
+  "name": "es-cookies",
   "version": "2.1.15",
   "description": "Module-friendly fork of js-cookie. A simple, lightweight JavaScript API for handling cookies",
   "main": "lib/cookies.js",
