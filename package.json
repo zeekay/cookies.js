@@ -4,7 +4,6 @@
   "description": "Module-friendly fork of js-cookie. A simple, lightweight JavaScript API for handling cookies",
   "main": "lib/cookies.js",
   "module": "lib/cookies.mjs",
-  "js:next": "lib/cookies.mjs",
   "files": [
     "src/",
     "lib/"

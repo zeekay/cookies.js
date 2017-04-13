@@ -7,23 +7,23 @@ task 'clean', 'clean project', ->
   exec 'rm -rf lib'
 
 task 'build', 'build project', ->
-  bundle.write
-    entry:   'src/index.coffee'
-    formats: ['cjs', 'es']
+  b = new Bundle
+    entry: 'src/index.coffee'
     compilers:
       coffee: version: 1
+
+  Promise.all [
+    b.write format: 'es'
+    b.write format: 'cjs', include: ['es-is']
+    b.write
+      format:     'web'
+      moduleName: 'Cookies'
+      sourceMap:  'inline'
+      dest:       'cookies.js'
+  ]
 
 task 'build:min', 'build minified version', ['build'], ->
-  yield bundle.write
-    entry:      'src/index.coffee'
-    dest:       'cookies.js'
-    sourceMap:  'inline'
-    format:     'web'
-    moduleName: 'Cookies'
-    compilers:
-      coffee: version: 1
-
-  yield exec 'uglifyjs cookies.js -o cookies.min.js'
+  exec 'uglifyjs cookies.js -o cookies.min.js'
 
 task 'watch', 'watch project', ->
   watch 'src/*.coffee', (filename) ->
