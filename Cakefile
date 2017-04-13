@@ -14,12 +14,15 @@ task 'build', 'build project', ->
 
   Promise.all [
     b.write format: 'es'
-    b.write format: 'cjs', include: ['es-is']
+    b.write
+      format:  'cjs'
+      include: ['es-is']
     b.write
       format:     'web'
+      dest:       'cookies.js'
+      external:   false
       moduleName: 'Cookies'
       sourceMap:  'inline'
-      dest:       'cookies.js'
   ]
 
 task 'build:min', 'build minified version', ['build'], ->
